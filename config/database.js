@@ -2,7 +2,7 @@ import mysql from 'mysql2';
 
 // CRIAR CONECCAO COM O DB  
 const db = mysql.createConnection({
-           host: 'cstbalancas.com.br',
+           host: 'mysql.cstbalancas.com.br',
            user: 'cstbalancas',
            password: 'Cstwild533644',
            database: 'cstbalancas',

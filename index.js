@@ -27,7 +27,7 @@ app.listen(21050)
 
 //Rota principal da aplicacao, para acesso direto na porta
 app.get('/', (req, res) => { 
-    res.send('Ola, esta aplicação esta rodando em NodeJS versão ' + process.version);
+    res.send('<h1>'+'Ola, esta aplicação esta rodando em NodeJS versão ' + process.version+'</h1>);
     })
      
 

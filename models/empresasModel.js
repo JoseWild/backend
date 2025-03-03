@@ -1,4 +1,4 @@
-import dbConnect from "../config/dbConnection";
+import dbConnect from "../config/dbConnection.js";
 
 export const getEmpresas = (result) => {
     dbConnect.query('SELECT * FROM empresas', (err, results) => {
@@ -28,19 +28,19 @@ export const postEmpresa = (data, result) => {
             console.log(err);
             result(err, null);
         } else {
-            result(null, err);
+            result(null, results);
         }
     })
 }
 
 
-export const updataEmpresa = (data, result ) => {
-    dbConnect.query('UPDATA empresas SET emp_id = ? ',[data], (err, results) => {
+export const updateEmpresa = (data, id, result) => {
+    dbConnect.query('UPDATA empresas SET ? WHERE emp_id =  ?', [data, id], (err, results) => {
         if (err) {
             console.log(err) ;
             result(err, null) ;
         } else {
-            result(null, err)
+            result(null, results)
         }
     }) 
 }

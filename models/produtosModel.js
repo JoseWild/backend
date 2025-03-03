@@ -45,8 +45,19 @@ export const insertProdutos =(data, result) => {
     })
 }
 
-export const updateProduto = (id, data, result) => {
-    dbConnect.query('UPDATE SET produtos WHERE prod_id = ?', [id], (data, results) => {
+export const updateProduto = (data, id, result) => {
+    dbConnect.query('UPDATE produtos SET prod_data = ?, prod_descricao = ?, prod_referencia = ?, prod_qtd = ?,'
+        +' prod_custo = ?, prod_venda = ?, prod_end = ?, prod_num = ?, prod_obs = ?' 
+        +' WHERE prod_id = ?',
+         [      data.prod_data,
+                data.prod_descricao,
+                data.prod_referencia,
+                data.prod_qtd,
+                data.prod_custo,
+                data.prod_venda,
+                data.prod_end,
+                data.prod_num,
+                data.prod_obs, id], (err, results) => {
         if (err) {
             console.log(err) ;
             result(err, null) ;
@@ -57,7 +68,8 @@ export const updateProduto = (id, data, result) => {
 }
 
 export const deleteProduto = (id, result) => {
-    dbConnect.query('DELETE FROM produtos WHERE prod_id = ?', [id], (err, results) =>{
+    dbConnect.query('DELETE FROM produtos WHERE prod_id = ?', 
+        [id], (err, results) => {
         if (err) {
             console.log(err);
             result(err, null);

@@ -1,6 +1,7 @@
 import express from 'express'
-import { produtosIDShow, IDProdutoShow, produtosInsertShow, produtosShow, alterarProdutoShow } from '../controllers/produtoContrl.js'
+import { produtosIDShow, IDProdutoShow, produtosInsertShow, produtosShow, alterarProdutoShow, deleteProdutoShow } from '../controllers/produtoContrl.js'
 import { clienteIDShow, clienteShow, ClientePostShow, ClienteShowID } from '../controllers/clienteControl.js';
+import { showEmpresas, showEmpresasID, showInsert, showUpdate, showDelete } from '../controllers/empresaControl.js';
 
 
 const router = express.Router() ;
@@ -8,15 +9,24 @@ const router = express.Router() ;
 router.get('/', (req, res) => { 
     res.send('Ola, esta aplicacao esta rodando em NodeJS versao ' + process.version);
 })
+
 router.get('/produtos', produtosShow);
-router.get('/produtos/:id', produtosIDShow);
-router.post('/produtos', produtosInsertShow);
+router.get('/produto/:id', produtosIDShow);
+router.post('/produto/cadastro', produtosInsertShow);
 router.put('/produto/alterar/:id', alterarProdutoShow)
-router.get('/produtosid', IDProdutoShow)
+router.delete('/produtos/:id', deleteProdutoShow)
+
+
 router.get('/clientes', clienteShow);
 router.get('/clientes/:id', clienteIDShow);
 router.post('/cliente', ClientePostShow);
 router.get('/cliente/clienteid', ClienteShowID)
+
+router.get('/empresas', showEmpresas);
+router.get('/empresa/:id', showEmpresasID);
+router.post('/empresa', showInsert);
+router.put('/empresa/:id', showUpdate);
+router.delete('/empresas/:id', showDelete);
 
 export default router;
 

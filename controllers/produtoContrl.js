@@ -44,7 +44,8 @@ export const produtosInsertShow = (req, res) => {
 
 export const alterarProdutoShow = (req, res) => {
     const data = req.body ;
-    updateProduto(data, (err, results) => {
+    const id = req.params.id ;
+    updateProduto(data, id,  (err, results) => {
         if (err) {
             res.send(err) ;
         } else {
@@ -55,7 +56,8 @@ export const alterarProdutoShow = (req, res) => {
 
 
 export const deleteProdutoShow =  (req, res) => {
-    deleteProduto(req.params.id, (err, results) => {
+    const id = req.params.id ;
+    deleteProduto(id, (err, results) => {
         if (err) {
             res.send(err) ;
         } else {

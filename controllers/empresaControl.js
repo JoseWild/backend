@@ -1,10 +1,11 @@
-import { deleteEmpresas, getEmpresas, getEmpresasID, postEmpresa, updataEmpresa } from "../models/empresasModel";
+import { deleteEmpresas, getEmpresas, getEmpresasID, postEmpresa, updateEmpresa } from "../models/empresasModel.js"
 
 export const showEmpresas = (req, res) => {
     getEmpresas((err, results) => {
         if (err) {
             res.send(err) ;
         } else {
+
             res.json(results) ;
         }
     })
@@ -22,7 +23,7 @@ export const showEmpresasID = (req, res) => {
 
 export const showInsert = (req, res) => {
     const data = req.body ;
-    insertEmpresa(data, (err, results) => {
+    postEmpresa(data, (err, results) => {
         if (err) {
             res.send(err) ;
         } else {

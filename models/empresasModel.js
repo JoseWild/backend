@@ -17,7 +17,7 @@ export const getEmpresasID = (id, result) => {
             console.log('err');
             result(err, null);
         } else {
-            result(null, results);
+            result(null, results[0]);
         }
     })
 }
@@ -35,7 +35,14 @@ export const postEmpresa = (data, result) => {
 
 
 export const updateEmpresa = (data, id, result) => {
-    dbConnect.query('UPDATA empresas SET ? WHERE emp_id =  ?', [data, id], (err, results) => {
+    dbConnect.query('UPDATE empresas SET emp_datacad = ?, emp_razao = ?, emp_fantasia = ?, '
+        +'emp_cnpj = ?, emp_insc = ? WHERE emp_id =  ?',
+        [ data.emp_datacad,
+          data.emp_razao,
+          data.emp_fantasia,
+          data.emp_cnpj,
+          data.emp_insc, 
+          id], (err, results) => {
         if (err) {
             console.log(err) ;
             result(err, null) ;

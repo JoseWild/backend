@@ -24,9 +24,9 @@ router.get('/cliente/clienteid', ClienteShowID)
 
 router.get('/empresas', showEmpresas);
 router.get('/empresa/:id', showEmpresasID);
-router.post('/empresa', showInsert);
-router.put('/empresa/:id', showUpdate);
-router.delete('/empresas/:id', showDelete);
+router.post('/empresa/cadastro', showInsert);
+router.put('/empresa/alterar/:id', showUpdate);
+router.delete('/empresas/excluir/:id', showDelete);
 
 export default router;
 

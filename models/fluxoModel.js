@@ -11,6 +11,17 @@ export const getFluxoDeCaixa = ( result ) => {
     })
 }
 
+export const getFluxoPorID = (id, result) => {
+    dbConnect.query('SELECT * FROM fluxodecaixa WHERE flux_id = ?', [id], (err, results) => {
+        if ( err ) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    })
+}
+
 export const getFluxoPorData = (data, result) => {
     // const data = data.flux_datacad ;
     dbConnect.query('SELECT * FROM fluxodecaixa WHERE flux_datacad >= datain and flux_datacad <= datafin', (err, results) => {
@@ -53,7 +64,7 @@ export const updateFluxo = (data, id, result) => {
 }
 
 
-export const deleteFluxo = (id) => {
+export const deleteFluxo = (id, result) => {
     dbConnect.query('DELETE FROM fluxodecaixa WHERE flux_id = ?', [id], (err, results) =>{
         if (err) {
             console.log(err) ;

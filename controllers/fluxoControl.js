@@ -1,8 +1,18 @@
-import { getFluxoDeCaixa, getFluxoPorData, insertFluxo, updateFluxo, deleteFluxo } from '../models/fluxoModel.js'
+import { getFluxoDeCaixa, getFluxoPorID, getFluxoPorData, insertFluxo, updateFluxo, deleteFluxo } from '../models/fluxoModel.js'
 
 export const fluxoShow = (req, res) => {
     getFluxoDeCaixa((error, results) => {
         if ( error ) {
+            res.send(error) ;
+        } else {
+            res.json(results)
+        }
+    })
+}
+
+export const fluxoPorIDShow = (req, res) => {
+    getFluxoPorID(req.params.id, (error, results) => {
+        if (error) {
             res.send(error) ;
         } else {
             res.json(results)

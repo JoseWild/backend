@@ -22,6 +22,17 @@ export const getEmpresasID = (id, result) => {
     })
 }
 
+export const getEmpresaCNPJ = (cnpj, result) => {
+    dbConnect.query('SELECT * FROM empresas WHERE emp_cnpj = ?',[cnpj], (err, results) => {
+        if (err) {
+            console.log(err) ;
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    })
+}
+
 export const postEmpresa = (data, result) => {
     dbConnect.query('INSERT INTO empresas SET ?', [data],  (err, results) => {
         if (err) {

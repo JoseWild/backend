@@ -1,4 +1,4 @@
-import { deleteEmpresas, getEmpresas, getEmpresasID, postEmpresa, updateEmpresa } from "../models/empresasModel.js"
+import { getEmpresas, getEmpresasID, getEmpresaCNPJ, postEmpresa, updateEmpresa, deleteEmpresas } from "../models/empresasModel.js"
 
 export const showEmpresas = (req, res) => {
     getEmpresas((err, results) => {
@@ -12,11 +12,23 @@ export const showEmpresas = (req, res) => {
 }
 
 export const showEmpresasID = (req, res) => {
-    getEmpresasID(req.params.id, (err, results) => {
+    const id = req.params.id;
+    getEmpresasID(id, (err, results) => {
         if (err) {
             res.send(err) ;
         } else {
             res.json(results) ;
+        }
+    })
+}
+
+export const showEmpresaCNPJ = (req, res) => {
+    const cnpj = req.params
+    getEmpresaCNPJ(req.params.cnpj, (err, results) => {
+        if (err) {
+            res.send(err) ;
+        } else {
+            res.json(results)
         }
     })
 }

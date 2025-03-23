@@ -12,7 +12,8 @@ export const produtosShow = (req, res) => {
 }
 
 export const produtosIDShow = (req, res) => {
-    getProdutosID(req.params.id, (err, results) => {
+    const id = req.params.id ;
+    getProdutosID(id, (err, results) => {
         if (err) {
             res.send(err);
         } else {
